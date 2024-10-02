@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequential Sliding Text with Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Tam ekran yüksekliği */
+            font-size: 4em; /* Yazı boyutu */
+        }
+
+        .text-container {
+            display: flex;
+            margin-left: -350px; /* "Sizin İçin" yazısını sola kaydırma */
+        }
+
+        .sliding-text {
+            position: relative; /* Konum ayarları için */
+            overflow: visible; /* Taşmaya izin verir */
+            white-space: nowrap; /* Yazıların yan yana kalması için */
+            margin-left: 10px; /* "Sizin İçin" yazısı ile metinler arasında boşluk */
+        }
+
+        .sliding-text p {
+            position: absolute;
+            width: 100%; /* Tam genişlik */
+            transform: translateY(100%); /* Başlangıçta görünmez */
+            opacity: 0; /* Başlangıçta görünmez */
+            animation: slideText 15s ease-in-out infinite; /* Animasyon süresi */
+        }
+
+        /* Her metne farklı bir animasyon gecikmesi uygulanıyor */
+        .sliding-text p:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .sliding-text p:nth-child(2) {
+            animation-delay: 3s; /* 3 saniye gecikme */
+        }
+
+        .sliding-text p:nth-child(3) {
+            animation-delay: 6s; /* 6 saniye gecikme */
+        }
+
+        .sliding-text p:nth-child(4) {
+            animation-delay: 9s; /* 9 saniye gecikme */
+        }
+
+        .sliding-text p:nth-child(5) {
+            animation-delay: 12s; /* 12 saniye gecikme */
+        }
+
+        @keyframes slideText {
+            0%, 10% {
+                transform: translateY(100%); /* Başlangıçta görünmez */
+                opacity: 0; /* Gizli */
+            }
+            15%, 30% {
+                transform: translateY(0); /* Ortada duruyor */
+                opacity: 1; /* Görünür */
+            }
+            35%, 100% {
+                transform: translateY(-100%); /* Yukarı kayıyor ve görünmez oluyor */
+                opacity: 0; /* Gizli */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="text-container">
+        <span>Sizin İçin</span>
+        <div class="sliding-text">
+            <p>Çabalıyoruz</p>
+            <p>Kaliteli Yazılımlar</p>
+            <p>Sınırsız Destek</p>
+            <p>Hayalleriniz</p>
+            <p>Hayallerimiz</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
